@@ -2,6 +2,60 @@
 
 **applyTo:** `**/*`
 
+TL;DR
+This file defines a technology‑agnostic SDLC: feature intake → design → implementation → verification → release. Use it as the canonical workflow; project-specific skills and configuration belong in the .claude/skills, pipeline/, and docs/ areas.
+
+How to use
+1. Read `AGENTS.md` first, then `pipeline/orchestration.md`.
+2. Use the feature files in `pipeline/features/` for official specs and decisions.
+3. Author agents and skills using the templates in `docs/AGENTS-templates.md` and `docs/SKILLS-templates.md`.
+4. Make changes via a feature branch and open a draft PR; do not merge without required human approval.
+
+Table of Contents
+- TL;DR & How to use
+- 1. Technology-Agnostic Design Principle
+- 2. Core Purpose
+- 3. Core Principles
+- 4. Required Repository Structure
+- 5. Universal vs Project-Specific Rules
+- 6. Repository Entry Point
+- 7. Feature State Machine
+- 8. Feature Intake
+- 9. Branch or Workspace Setup
+- 10. Feature Specification
+- 11. Definition of Ready
+- 12. Architecture and Design
+- 13. Architecture Review
+- 14. Implementation Planning
+- 15. Implementation
+- 16. Automated Quality Checks
+- 17. Testing Strategy
+- 18. Architecture Fitness Checks
+- 19. Contract and Compatibility Validation
+- 20. QA Validation
+- 21. Build and Package Verification
+- 22. Final Review Gate
+- 23. Human Approval
+- 24. Delivery
+- 25. Release and Deployment Workflow
+- 26. Safe Release Strategies
+- 27. Observability
+- 28. Production Validation
+- 29. Incident and Defect Management
+- 30. Developer Experience
+- 31. Engineering Metrics
+- 32. Security
+- 33. AI-Assisted Development
+- 34. AI Application Quality
+- 35. Required Agent Definitions (see docs/AGENTS-templates.md)
+- 36. Required Skills (see docs/SKILLS-templates.md)
+- 37. Repository Conventions
+- 38. Execution Logging
+- 39. Review Checklist
+- 40. Continuous Improvement Loop
+- 41. Success Criteria
+- 42. Canonical Lifecycle Summary
+
 ## Purpose
 
 Use this instruction file whenever a project needs a canonical Software Development Lifecycle (SDLC), feature delivery workflow, engineering quality model, and supporting agent definitions.
@@ -1050,7 +1104,6 @@ Local Development
 Architecture Overview
 Testing
 Troubleshooting
-Runbooks
 ```
 
 The project should provide discoverable ways to:
@@ -1169,105 +1222,15 @@ AI-specific evaluation methods are project-specific.
 
 # 35. Required Agent Definitions
 
-Create role definitions for:
+Agent definitions and examples have been moved to `docs/AGENTS-templates.md` to keep this file concise. That file contains a ready-to-copy agent template and several example agent definitions (BA, Architect, Developer, QA, Planner, Review).
 
-* `ba-agent`
-* `architect-agent`
-* `architecture-review-agent`
-* `planner-agent`
-* `developer-agent`
-* `qa-agent`
-* `review-agent`
-* `bugfix-agent`
-* `pr-review-agent`
-
-Additional agents such as:
-
-* `devops-agent`
-* `security-agent`
-* `data-agent`
-* `ai-evaluation-agent`
-
-may be added when appropriate to the project.
-
-Each agent definition must contain:
-
-## Purpose
-
-What the role owns.
-
-## Input
-
-Required artifacts and current state.
-
-## Output
-
-Expected artifacts and allowed next state.
-
-## Workflow Steps
-
-Ordered actions.
-
-## Validation Criteria
-
-Conditions required for successful completion.
-
-## Known Constraints
-
-Project-specific and workflow-specific restrictions.
-
-## Required Artifacts
-
-Files or evidence created or updated.
-
-## Allowed State Transitions
-
-Valid source and destination states.
-
-## Escalation Rules
-
-Conditions requiring:
-
-* Rework
-* Another role
-* Design review
-* Security review
-* Human decision
+Please author new agents using the template in `docs/AGENTS-templates.md` and add agent files under `.claude/agents/` when appropriate.
 
 ---
 
 # 36. Required Skills
 
-At minimum, software projects should create reusable skills appropriate to the project.
-
-Recommended defaults:
-
-* `build-code-skill`
-* `spec-generation-skill`
-* `migration-safety-skill`
-* `testing-strategy-skill`
-* `observability-skill`
-* `security-skill`
-* `developer-experience-skill`
-* `create-pr-skill`
-
-The internal contents of these skills must be project and stack specific.
-
-For example:
-
-```text
-Universal:
-build-code-skill
-
-Project A:
-Language/framework build commands
-
-Project B:
-Different build commands
-
-Project C:
-Different packaging and validation process
-```
+Reusable, stack-specific skills and their templates live in `docs/SKILLS-templates.md` and should be implemented under `.claude/skills/` or an equivalent project directory.
 
 ---
 
